@@ -38,7 +38,7 @@ Run the following command on a Linux based system:
    ```
    python ./scripts/testing_environment.py
    ```
-4. Run a jupyter lab instance with the following and navigate to the notebook 
+4. Run a jupyter lab instance with the following and navigate to the **notebook**
    in the browser. 
     ```
     jupyter-lab
