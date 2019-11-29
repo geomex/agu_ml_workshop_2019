@@ -30,17 +30,16 @@ Run the following command on a Linux based system:
     ```
     conda env create -f environment.yml
     ```
-    
 2. Activate the environment by running the following:
     ```
     conda activate agu_ml_workshop_2019
     ```
-3. Run a jupyter lab instance with the following:
+3. Test the environment by running the following command in your terminal:
+   ```
+   python ./scripts/testing_environment.py
+   ```
+4. Run a jupyter lab instance with the following and navigate to the notebook 
+   in the browser. 
     ```
     jupyter-lab
     ```
-3. Test the new evironment by running the cells from notebook:
-    ```
-       python 
-    ```
-3. 
