@@ -19,8 +19,8 @@
 This work was funded by Elder Research Inc., NASA's Earth and
 Space Science Fellowship (80NSSC18K1417), and Boise State
 University. It is intended for training purposes and exploration
-of CNN's capabilities and limitations to applications of spatial
-regression problems.
+of CNN's capabilities, limitations, and potential applications to
+geospatial regression problems.
 
 ### Cloning the Repository
 
