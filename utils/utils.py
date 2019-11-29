@@ -15,6 +15,9 @@ email:  geodatamex@gmail.com
 import gzip
 import pickle
 import numpy as np
+from sklearn import metrics
+from scipy.stats import pearsonr
+import pandas as pd
 
 def save_zipped_pickle(obj, filename, protocol=-1):
     with gzip.open(filename, 'wb') as f:
@@ -101,3 +104,149 @@ def df_to_array(
                 NROWS, NCOLS, order=order
             )
     return X, Y, UTME, UTMN, features
+
+
+
+def model_assessor(X, Y, loaded_model, val_index):
+    
+    '''
+    Inputs:
+    
+    Outputs:
+    
+    '''
+    
+    Ycal = {}
+    rsquared = {}
+    mae = {}
+    pearson = {}
+    rmse = {}
+    
+    for item in ['train','test','val']:
+        rsquared[item] = []
+        mae[item] = []
+        pearson[item] = []
+        rmse[item] = []
+    
+    Ycal['test'] = loaded_model.predict(X['test']).flatten()
+    Ycal['test'][Ycal['test'] < 0] = 0
+    Ycal['val'] = loaded_model.predict(X['train'][val_index, :, :, :])
+    Ycal['val'][Ycal['val'] < 0 ] = 0
+    Ycal['train'] = loaded_model.predict(
+        np.delete(X['train'], val_index, axis=0)
+    )
+    Ycal['train'][Ycal['train'] < 0] = 0
+
+    # Calculated Rsquared
+
+    rsquared['train'].append(
+        metrics.r2_score(
+            np.delete(Y['train'], val_index, axis=0).flatten()
+            ,Ycal['train'].flatten(),
+        )
+    )
+
+    rsquared['val'].append(
+        metrics.r2_score(
+            Y['train'][val_index, :, :].flatten()
+            ,Ycal['val'].flatten(),
+        )
+    )
+    rsquared['test'].append(
+        metrics.r2_score(Y['test'].flatten(), Ycal['test'].flatten())
+    )
+
+    # Calculate Pearson Correlation
+
+
+    pearson['train'].append(    
+        pearsonr(
+            np.delete(Y['train'], val_index, axis=0).flatten()
+            ,Ycal['train'].flatten())[0]
+    )
+
+    pearson['val'].append(
+        pearsonr(
+            Y['train'][val_index, :, :, :].flatten()
+            ,Ycal['val'].flatten())[0]
+    )
+
+    pearson['test'].append(
+        pearsonr(Y['test'].flatten(), Ycal['test'].flatten())[0]
+    )
+
+    # Calculate Mean Absolute Error
+
+    mae['train'].append(
+        metrics.mean_absolute_error(
+            Ycal['train'].flatten()
+            ,np.delete(Y['train'], val_index, axis=0).flatten()
+        )
+    )
+
+    mae['val'].append(
+        metrics.mean_absolute_error(
+            Ycal['val'].flatten()
+            ,Y['train'][val_index, :, :, :].flatten()
+        )
+    )
+
+    mae['test'].append(
+        metrics.mean_absolute_error(
+            Ycal['test'].flatten(), Y['test'].flatten()
+        )
+    )
+
+    # Calculate Root Mean Squared Error
+    rmse['train'].append(
+        np.sqrt(
+            metrics.mean_squared_error(
+                Ycal['train'].flatten()
+                ,np.delete(Y['train'], val_index, axis=0).flatten()
+            )
+        )
+    )
+
+    rmse['val'].append(
+        np.sqrt(
+            metrics.mean_squared_error(
+                Ycal['val'].flatten()
+                ,Y['train'][val_index, :, :, :].flatten()
+            )
+        )
+    )
+
+    rmse['test'].append(
+        np.sqrt(
+            metrics.mean_squared_error(
+                Ycal['test'].flatten(), Y['test'].flatten()
+            )
+        )
+    )
+    
+    model_assessment = pd.concat(
+    [
+        pd.DataFrame.from_dict(
+            rsquared
+            ,orient='columns'
+        )[['train','val','test']].T.rename(columns={0:'R^2'})
+    
+        ,pd.DataFrame.from_dict(
+            rmse
+            ,orient='columns'
+        )[['train','val','test']].T.rename(columns={0:'RMSE'})
+    
+        ,pd.DataFrame.from_dict(
+            mae
+            ,orient='columns'
+        )[['train','val','test']].T.rename(columns={0:'MAE'})
+    
+        ,pd.DataFrame.from_dict(
+            pearson
+            ,orient='columns'
+        )[['train','val','test']].T.rename(columns={0:'Pearson'})
+    ]
+    ,axis=1
+)
+    
+    return model_assessment
