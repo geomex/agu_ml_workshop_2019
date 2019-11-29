@@ -18,8 +18,9 @@
 
 This work was funded by Elder Research Inc., NASA's Earth and
 Space Science Fellowship (80NSSC18K1417), and Boise State
-University. It is intended for training purposes and case study
-of CNN's applied to spatial regression problems.
+University. It is intended for training purposes and exploration
+of CNN's capabilities and limitations to applications of spatial
+regression problems.
 
 ### Cloning the Repository
 
@@ -42,7 +43,7 @@ Run the following command on a Linux based system:
    python ./scripts/testing_environment.py
    ```
 4. Run a jupyter lab instance with the following and navigate to the **notebook**
-   in the browser. 
+   directory in the browser. 
     ```
     jupyter-lab
     ```
