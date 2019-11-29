@@ -28,6 +28,19 @@ Run the following command on a Linux based system:
 
 1. Navigate into the repository's folder and run the following:
     ```
-    conda create
-    ```adsfasdfdkfas;;lkdjk;ajdf]['\
-    kjhgvfyutf']
+    conda env create -f environment.yml
+    ```
+    
+2. Activate the environment by running the following:
+    ```
+    conda activate agu_ml_workshop_2019
+    ```
+3. Run a jupyter lab instance with the following:
+    ```
+    jupyter-lab
+    ```
+3. Test the new evironment by running the cells from notebook:
+    ```
+       python 
+    ```
+3. 
