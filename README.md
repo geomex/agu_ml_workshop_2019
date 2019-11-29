@@ -16,7 +16,10 @@
     
     email: joel.gongora@elderresearch.com
 
-    This work was funded by Elder Research Inc., NASA's Earth and Space Science Fellowship (80NSSC18K1417), and Boise State University. It is intended for training purposes and case study of CNN's applied to spatial regression problems.
+This work was funded by Elder Research Inc., NASA's Earth and
+Space Science Fellowship (80NSSC18K1417), and Boise State
+University. It is intended for training purposes and case study
+of CNN's applied to spatial regression problems.
 
 ### Cloning the Repository
 
