@@ -6,7 +6,7 @@
 </div>
 
 <H1 align="center">
-# A Tutorial on Convolutional Neural Networks: </br> Image Regression
+A Tutorial on Convolutional Neural Networks: </br> Image Regression
 </H1>
     by: Joel A. Gongora
     Data Scientist, PhD Candidate, and Machine Learning Enthusiast
