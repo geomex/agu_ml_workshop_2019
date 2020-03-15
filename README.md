@@ -5,8 +5,7 @@
     <img src="./figures/nasa.png" width="100"> 
 </div>
 
-# Convolutional Neural Network Tutorial:
-# Image Regression.
+# Convolutional Neural Network Tutorial: </br> Image Regression.
 
     by: Joel A. Gongora
     Data Scientist, PhD Candidate, and Machine Learning Enthusiast
