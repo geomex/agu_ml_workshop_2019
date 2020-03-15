@@ -8,7 +8,7 @@
 <H1 align="center">
 A Tutorial on Convolutional Neural Networks: </br> Image Regression
 </H1>
-    by: Joel A. Gongora
+    by: Joel A. Gongora <br>
     Data Scientist, PhD Candidate, and Machine Learning Enthusiast
     
     Company: Elder Research Inc.
