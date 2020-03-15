@@ -5,9 +5,9 @@
     <img src="./figures/nasa.png" width="100"> 
 </div>
 
-<div align="center">
+<H1 align="center">
 # Convolutional Neural Network Tutorial: </br> Image Regression
-</div>
+</H1>
     by: Joel A. Gongora
     Data Scientist, PhD Candidate, and Machine Learning Enthusiast
     
