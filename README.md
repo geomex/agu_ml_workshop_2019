@@ -17,8 +17,8 @@ A Tutorial on Convolutional Neural Networks: </br> Image Regression
     
     email: joel.gongora@elderresearch.com
 
-This work was funded by Elder Research Inc., NASA's Earth and
-Space Science Fellowship (80NSSC18K1417), and Boise State
+This work was funded by NASA's Earth and
+Space Science Fellowship (80NSSC18K1417), Elder Research Inc., and Boise State
 University. It is intended for training purposes and exploration
 of CNN's capabilities, limitations, and potential applications to
 geospatial regression problems.
